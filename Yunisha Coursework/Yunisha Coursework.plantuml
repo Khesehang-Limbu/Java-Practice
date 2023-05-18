@@ -1,0 +1,283 @@
+@startuml
+
+title __YUNISHA COURSEWORK's Class Diagram__\n
+
+  namespace  {
+    class BankCard {
+        - balanceAmount : int
+        - bankAccount : String
+        - cardId : int
+        - clientName : String
+        - issuerBank : String
+        + BankCard()
+        + display()
+        + getBalanceAmount()
+        + getBankAccount()
+        + getCardId()
+        + getClientName()
+        + getIssuerBank()
+        + setBalanceAmount()
+        + setClientName()
+    }
+  }
+  
+
+  namespace  {
+    class BankGUI {
+        + BankGUI()
+        {static} + main()
+    }
+  }
+  
+
+  namespace  {
+    class Btn {
+        ~ Btn()
+    }
+  }
+  
+
+  namespace  {
+    class CancelCreditSection {
+        ~ CancelCreditSection()
+    }
+  }
+  
+
+  namespace  {
+    class ComboBox {
+        ~ ComboBox()
+    }
+  }
+  
+
+  namespace  {
+    class ContentPanel {
+        ~ mainPanel : JPanel
+        ~ ContentPanel()
+    }
+  }
+  
+
+  namespace  {
+    class CreditCard {
+        - creditLimit : double
+        - cvcNumber : int
+        - expirationDate : String
+        - gracePeriod : int
+        - interestRate : double
+        - isGranted : boolean
+        + CreditCard()
+        + cancelCreditCard()
+        + display()
+        + getCreditLimit()
+        + getCvcNumber()
+        + getExpirationDate()
+        + getGracePeriod()
+        + getInterestRate()
+        + getIsGranted()
+        + setCreditLimit()
+    }
+  }
+  
+
+  namespace  {
+    class CreditCardSection {
+        ~ dateFont : Font
+        ~ CreditCardSection()
+    }
+  }
+  
+
+  namespace  {
+    class DateGenerator {
+        ~ generateDate()
+    }
+  }
+  
+
+  namespace  {
+    class DebitCard {
+        - dateOfWithdrawal : String
+        - hasWithdrawn : boolean
+        - pinNumber : int
+        - withdrawalAmount : int
+        + DebitCard()
+        + display()
+        + getDateOfWithdrawal()
+        + getPinNumber()
+        + getWithdrawalAmount()
+        + hasWithdrawn()
+        + setWithdrawalAmount()
+        + withdraw()
+    }
+  }
+  
+
+  namespace  {
+    class DebitCardSection {
+        ~ DebitCardSection()
+    }
+  }
+  
+
+  namespace  {
+    class DisplayCredit {
+        ~ DisplayCredit()
+    }
+  }
+  
+
+  namespace  {
+    class DisplayDebit {
+        ~ DisplayDebit()
+    }
+  }
+  
+
+  namespace  {
+    class InputField {
+        + InputField()
+    }
+  }
+  
+
+  namespace  {
+    class Label {
+        ~ Label()
+    }
+  }
+  
+
+  namespace  {
+    class MenuPanel {
+        ~ bankCards : ArrayList<BankCard>
+        ~ displayTitle : JLabel
+        ~ line1 : JSeparator
+        ~ line2 : JSeparator
+        ~ mainHeading : JLabel
+        ~ sectionTitleCreate : JLabel
+        ~ sectionTitleOperation : JLabel
+        ~ MenuPanel()
+    }
+  }
+  
+
+  namespace  {
+    class SetCreditSection {
+        ~ dateFont : Font
+        ~ SetCreditSection()
+    }
+  }
+  
+
+  namespace  {
+    class TextArea {
+        ~ TextArea()
+    }
+  }
+  
+
+  namespace  {
+    class WithdrawAmountSection {
+        ~ dateFont : Font
+        ~ WithdrawAmountSection()
+    }
+  }
+  
+
+  BankGUI -up-|> javax.swing.JFrame
+  Btn -up-|> javax.swing.JButton
+  CancelCreditSection -up-|> javax.swing.JFrame
+  CancelCreditSection o-- Btn : cancel
+  CancelCreditSection o-- InputField : cardId
+  CancelCreditSection o-- Btn : clear
+  CancelCreditSection o-- Btn : exit
+  CancelCreditSection o-- CancelCreditSection : mainPanel
+  ComboBox -up-|> javax.swing.JComboBox
+  ContentPanel -up-|> javax.swing.JPanel
+  ContentPanel o-- Label : contentSectionTitle
+  CreditCard -up-|> BankCard
+  CreditCardSection -up-|> javax.swing.JFrame
+  CreditCardSection o-- Btn : add
+  CreditCardSection o-- InputField : balanceAmount
+  CreditCardSection o-- InputField : bankAccount
+  CreditCardSection o-- InputField : cardId
+  CreditCardSection o-- Btn : clear
+  CreditCardSection o-- InputField : clientName
+  CreditCardSection o-- CreditCard : creditCard
+  CreditCardSection o-- InputField : cvcNumber
+  CreditCardSection o-- Label : dayLabel
+  CreditCardSection o-- Btn : exit
+  CreditCardSection o-- Label : expirationDate
+  CreditCardSection o-- InputField : interestRate
+  CreditCardSection o-- InputField : issuerBank
+  CreditCardSection o-- CreditCardSection : mainPanel
+  CreditCardSection o-- Label : monthLabel
+  CreditCardSection o-- Label : yearLabel
+  DebitCard -up-|> BankCard
+  DebitCardSection -up-|> javax.swing.JFrame
+  DebitCardSection o-- Btn : add
+  DebitCardSection o-- InputField : balanceAmount
+  DebitCardSection o-- InputField : bankAccount
+  DebitCardSection o-- InputField : cardId
+  DebitCardSection o-- Btn : clear
+  DebitCardSection o-- InputField : clientName
+  DebitCardSection o-- DebitCard : debitCard
+  DebitCardSection o-- Btn : exit
+  DebitCardSection o-- InputField : issuerBank
+  DebitCardSection o-- DebitCardSection : mainPanel
+  DebitCardSection o-- InputField : pinNumber
+  DisplayCredit -up-|> javax.swing.JFrame
+  DisplayCredit o-- InputField : cardId
+  DisplayCredit o-- Btn : clear
+  DisplayCredit o-- Btn : display
+  DisplayCredit o-- Btn : exit
+  DisplayCredit o-- DisplayCredit : mainPanel
+  DisplayDebit -up-|> javax.swing.JFrame
+  DisplayDebit o-- InputField : cardId
+  DisplayDebit o-- Btn : clear
+  DisplayDebit o-- Btn : display
+  DisplayDebit o-- Btn : exit
+  DisplayDebit o-- DisplayDebit : mainPanel
+  InputField -up-|> javax.swing.JTextField
+  Label -up-|> javax.swing.JLabel
+  MenuPanel -up-|> javax.swing.JPanel
+  MenuPanel o-- Btn : addCreditCard
+  MenuPanel o-- Btn : addDebitCard
+  MenuPanel o-- Btn : cancelCreditCard
+  MenuPanel o-- Btn : displayCreditCard
+  MenuPanel o-- Btn : displayDebitCard
+  MenuPanel o-- Btn : setCreditLimit
+  MenuPanel o-- Btn : withdrawFromDebitCard
+  SetCreditSection -up-|> javax.swing.JFrame
+  SetCreditSection o-- InputField : cardId
+  SetCreditSection o-- Btn : clear
+  SetCreditSection o-- InputField : creditLimit
+  SetCreditSection o-- Btn : exit
+  SetCreditSection o-- InputField : gracePeriod
+  SetCreditSection o-- SetCreditSection : mainPanel
+  SetCreditSection o-- Btn : set
+  TextArea -up-|> javax.swing.JTextArea
+  WithdrawAmountSection -up-|> javax.swing.JFrame
+  WithdrawAmountSection o-- InputField : cardId
+  WithdrawAmountSection o-- Btn : clear
+  WithdrawAmountSection o-- Label : dayLabel
+  WithdrawAmountSection o-- Btn : exit
+  WithdrawAmountSection o-- WithdrawAmountSection : mainPanel
+  WithdrawAmountSection o-- Label : monthLabel
+  WithdrawAmountSection o-- InputField : pinNumber
+  WithdrawAmountSection o-- Btn : withdraw
+  WithdrawAmountSection o-- InputField : withdrawalAmount
+  WithdrawAmountSection o-- Label : withdrawalDate
+  WithdrawAmountSection o-- Label : yearLabel
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
